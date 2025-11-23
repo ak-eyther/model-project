@@ -1,0 +1,305 @@
+# Canonical Structure Configuration
+# Defines the single source of truth for file placement rules
+# Version: 1.0.0
+# Last Updated: 2025-11-22
+
+# File type definitions and their canonical locations
+file_types:
+  # Completion Reports - Archive after task completion
+  - name: "completion_reports"
+    description: "Task/feature completion reports"
+    patterns:
+      - "*-COMPLETE*.md"
+      - "*-COMPLETION*.md"
+      - "*-completion-report*.md"
+      - "COMPLETE-*.md"
+      - "COMPLETION-*.md"
+    canonical_location: ".claude/archive/completion-reports/"
+    lifecycle_rule:
+      trigger: "file_age > 7 days AND task_status == 'completed'"
+      action: "archive"
+      query_memory_expert: true
+      retention_days: 90
+
+  # Impact Analysis Documents
+  - name: "impact_analysis"
+    description: "Feature impact analysis documents"
+    patterns:
+      - "*-impact-analysis.md"
+      - "IMPACT-*.md"
+      - "*-IA.md"
+    canonical_location: ".claude/memory/impact-analysis/"
+    lifecycle_rule:
+      trigger: "feature_status == 'completed' AND file_age > 30 days"
+      action: "archive"
+      query_memory_expert: true
+      archive_location: ".claude/archive/impact-analyses/"
+      retention_days: 180
+
+  # Agent Memory Files
+  - name: "agent_memory"
+    description: "Agent memory JSON files"
+    patterns:
+      - "*-memory.json"
+      - "*-calibration.json"
+    canonical_location: ".claude/memory/"
+    lifecycle_rule:
+      trigger: "never"
+      action: "keep"
+      query_memory_expert: false
+      note: "Memory files are permanent, never archived"
+
+  # Testing Artifacts
+  - name: "test_results"
+    description: "Test results and reports"
+    patterns:
+      - "test-*.log"
+      - "*-test-results.md"
+      - "TEST-*.md"
+      - "test_*.txt"
+    canonical_location: ".claude/archive/testing/"
+    lifecycle_rule:
+      trigger: "file_age > 14 days"
+      action: "archive"
+      query_memory_expert: false
+      retention_days: 60
+
+  # Sprint/Phase Documentation
+  - name: "sprint_docs"
+    description: "Sprint and phase documentation"
+    patterns:
+      - "SPRINT-*.md"
+      - "PHASE-*.md"
+      - "*-SPRINT*.md"
+      - "*-PHASE*.md"
+    canonical_location: ".claude/archive/"
+    lifecycle_rule:
+      trigger: "sprint_status == 'completed' AND file_age > 21 days"
+      action: "archive"
+      query_memory_expert: true
+      retention_days: 120
+
+  # Design Specifications
+  - name: "design_specs"
+    description: "Design and architecture specifications"
+    patterns:
+      - "*-DESIGN.md"
+      - "DESIGN-*.md"
+      - "*-spec.md"
+      - "*-SPEC.md"
+    canonical_location: ".claude/memory/design-specs/"
+    lifecycle_rule:
+      trigger: "implementation_complete AND file_age > 45 days"
+      action: "archive"
+      query_memory_expert: true
+      archive_location: ".claude/archive/design-specs/"
+      retention_days: 365
+
+  # Deployment Reports
+  - name: "deployment_reports"
+    description: "Deployment and rollout reports"
+    patterns:
+      - "*-DEPLOYMENT*.md"
+      - "DEPLOY-*.md"
+      - "*-rollout*.md"
+    canonical_location: ".claude/docs/deployment/"
+    lifecycle_rule:
+      trigger: "deployment_age > 30 days"
+      action: "archive"
+      query_memory_expert: false
+      archive_location: ".claude/archive/deployments/"
+      retention_days: 90
+
+  # Agent Definitions
+  - name: "agent_definitions"
+    description: "Agent definition markdown files"
+    patterns:
+      - "*.md"
+    canonical_location: ".claude/agents/"
+    conditions:
+      - "parent_dir == '.claude/agents'"
+    lifecycle_rule:
+      trigger: "never"
+      action: "keep"
+      note: "Agent definitions are permanent"
+
+  # Documentation
+  - name: "documentation"
+    description: "General documentation files"
+    patterns:
+      - "*.md"
+    canonical_location: ".claude/docs/"
+    conditions:
+      - "parent_dir == '.claude/docs'"
+    lifecycle_rule:
+      trigger: "obsolete == true"
+      action: "archive"
+      query_memory_expert: true
+      archive_location: ".claude/archive/docs/"
+
+  # Scripts
+  - name: "scripts"
+    description: "Utility scripts"
+    patterns:
+      - "*.sh"
+      - "*.py"
+    canonical_location: ".claude/scripts/"
+    conditions:
+      - "parent_dir == '.claude/scripts'"
+    lifecycle_rule:
+      trigger: "never"
+      action: "keep"
+      note: "Scripts are permanent infrastructure"
+
+  # Temporary Files
+  - name: "temporary"
+    description: "Temporary and working files"
+    patterns:
+      - "*.tmp"
+      - "*.temp"
+      - "*~"
+      - ".*.swp"
+      - "*.bak"
+    canonical_location: null
+    lifecycle_rule:
+      trigger: "immediate"
+      action: "delete"
+      query_memory_expert: false
+      note: "Temporary files should never be committed"
+
+# Forbidden patterns - files that should never exist in these locations
+forbidden_patterns:
+  - location: "/"
+    patterns:
+      - "*-COMPLETE*.md"
+      - "*-COMPLETION*.md"
+      - "TEST-*.md"
+      - "SPRINT-*.md"
+      - "PHASE-*.md"
+    recursive: false
+    message: "Root directory should not contain completion/test/sprint files"
+
+  - location: "/backend/"
+    patterns:
+      - "*-COMPLETE*.md"
+      - "*-COMPLETION*.md"
+      - "KG-*.md"
+      - "SPRINT-*.md"
+    message: "Backend directory should not contain documentation files"
+
+  - location: "/src/"
+    patterns:
+      - "*.md"
+      - "*.txt"
+    exceptions:
+      - "README.md"
+    message: "Source directory should only contain code files"
+
+  - location: ".claude/"
+    patterns:
+      - "*.tmp"
+      - "*.log"
+      - "*.bak"
+    exceptions:
+      - "cleanup-manager.log"
+      - "structure-enforcement.log"
+    message: "Claude directory should not contain temporary files"
+
+# Directory placement rules
+directory_rules:
+  - path: ".claude/archive/"
+    description: "Historical artifacts and completed work"
+    subdirs:
+      - "completion-reports/"
+      - "impact-analyses/"
+      - "design-specs/"
+      - "testing/"
+      - "deployments/"
+      - "docs/"
+      - "2025-*/"  # Year-based archives
+
+  - path: ".claude/memory/"
+    description: "Active agent memory and calibration"
+    subdirs:
+      - "impact-analysis/"
+      - "design-specs/"
+      - "cleanup-logs/"
+
+  - path: ".claude/docs/"
+    description: "Active documentation"
+    subdirs:
+      - "deployment/"
+      - "testing/"
+      - "architecture/"
+      - "knowledge-graph/"
+
+  - path: ".claude/agents/"
+    description: "Agent definitions (no subdirs)"
+    subdirs: []
+
+  - path: ".claude/scripts/"
+    description: "Utility and automation scripts"
+    subdirs: []
+
+  - path: ".claude/structure/"
+    description: "Structure enforcement configuration"
+    subdirs:
+      - "examples/"
+      - ".cache/"
+
+# Global settings
+settings:
+  # Enable/disable enforcement
+  enforcement_enabled: true
+
+  # Enforcement mode: "strict" | "warning" | "disabled"
+  enforcement_mode: "warning"  # Start with warning mode
+
+  # Query Memory Expert for all operations
+  query_memory_expert: true
+
+  # Default retention for archived files (days)
+  default_retention_days: 90
+
+  # Archive strategy: "move" | "copy"
+  archive_strategy: "move"
+
+  # Git integration
+  git_commit_archives: true
+  git_commit_message_template: "chore: auto-archive {count} files via structure enforcement"
+
+  # Performance settings
+  cache_validation_results: true
+  cache_ttl_seconds: 300
+  max_files_per_batch: 50
+
+  # Safety settings
+  dry_run_default: true
+  require_confirmation: true
+  backup_before_move: true
+
+  # Logging
+  log_level: "INFO"
+  log_file: ".claude/scripts/structure-enforcement.log"
+
+# Version and metadata
+metadata:
+  version: "1.0.0"
+  created: "2025-11-22"
+  created_by: "anand-2.0"
+  last_modified: "2025-11-22"
+  modified_by: "anand-2.0"
+  schema_version: "1"
+
+# Migration rules for existing misplaced files
+migration:
+  enabled: true
+  files_to_move:
+    - from: "/backend/KG-PHASE-2-COMPLETION-REPORT.md"
+      to: ".claude/archive/completion-reports/"
+    - from: "/backend/LLM-JUDGE-PHASE-1-DEPLOYMENT-COMPLETE.md"
+      to: ".claude/archive/deployments/"
+    - from: "/*-COMPLETE*.md"
+      to: ".claude/archive/completion-reports/"
+    - from: "/*-SPRINT*.md"
+      to: ".claude/archive/"

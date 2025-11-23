@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Project-specific (generated during setup)
+.claude/memory/*-memory.json
+.claude/structure/canonical-structure.yaml
+.claude/config/project-config.yaml
+.claude/config/reflection-config.json
+CLAUDE.md
+AGENT_COMMUNICATION_BOARD.md
+
+# Keep template files
+!.claude/memory/*-memory.json.template
+!.claude/structure/canonical-structure.yaml.j2
+!.claude/config/*.yaml.j2
+!.claude/config/*.json.j2

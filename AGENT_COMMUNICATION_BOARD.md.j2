@@ -1,0 +1,84 @@
+# Agent Communication Board
+**Project:** {{ project_name }}
+**Last Updated:** {{ setup_date }}
+**Admin:** {{ admin_email }}
+
+---
+
+## 📋 In Progress
+
+<!-- Tasks currently being worked on by agents -->
+<!-- Format: **[TASK-ID]** Description – @agent-name 🔄 (timestamp - status update) -->
+
+*No tasks in progress yet. When an agent starts work, they'll add an entry here.*
+
+---
+
+## ✅ Completed Today
+
+<!-- Tasks completed today -->
+<!-- Format: **[TASK-ID]** Description – @agent-name ✅ (timestamp - result summary) -->
+
+*No tasks completed yet. Completed tasks will appear here automatically.*
+
+---
+
+## ⏸️ Paused/Cancelled
+
+<!-- Tasks that were stopped or deprioritized -->
+<!-- Format: **[TASK-ID]** Description – @agent-name ⏸️ (timestamp - Stopped by user: [reason]) -->
+
+*No paused tasks yet.*
+
+---
+
+## 📝 Backlog
+
+<!-- Tasks waiting to be started -->
+<!-- Format: **[TASK-ID]** Description – Priority: High/Medium/Low -->
+
+*No backlog items yet. Add tasks here as they're identified.*
+
+---
+
+## 🚨 Blockers
+
+<!-- Critical issues blocking progress -->
+<!-- Format: **[BLOCKER-ID]** Description – @agent-name ⚠️ (timestamp - Needs: [what's needed to unblock]) -->
+
+*No blockers yet.*
+
+---
+
+## 📚 Reference
+
+**How to Update This Board:**
+
+1. **Starting Work:** Move task from Backlog → In Progress, add @agent-name and timestamp
+2. **Completing Work:** Move from In Progress → Completed Today, add result summary
+3. **Blocked:** Add to Blockers section with clear description of what's needed
+4. **Cancelled:** Move to Paused/Cancelled with reason
+
+**Example Entries:**
+
+```markdown
+## 📋 In Progress
+- **[FEAT-001]** User authentication system – @anand-2.0 🔄 (2025-01-15 10:30 - Implementing JWT tokens)
+
+## ✅ Completed Today
+- **[BUG-042]** Fix login timeout issue – @debugger → @anand-2.0 ✅ (2025-01-15 14:20 - Fixed, deployed to staging, all tests passing)
+
+## ⏸️ Paused/Cancelled
+- **[FEAT-002]** Advanced reporting – @atharva-2.0 ⏸️ (2025-01-15 11:00 - Stopped by user: authentication became urgent priority)
+
+## 🚨 Blockers
+- **[BLOCKER-001]** Database migration failing – @shawar-2.0 ⚠️ (2025-01-15 09:00 - Needs: DBA approval for schema changes)
+```
+
+---
+
+**Notes:**
+- This board is the single source of truth for project status
+- All agents MUST update this board when starting/completing/blocking work
+- Review this board at start of each work session
+- Archive completed items weekly to `.claude/archive/completion-reports/`

@@ -1,0 +1,10 @@
+# Claude Code Project Template - Python Dependencies
+
+# Core dependencies for setup wizard and automation
+PyYAML>=6.0.1          # Configuration file parsing
+jinja2>=3.1.2          # Template rendering (placeholders → actual values)
+questionary>=2.0.1     # Interactive CLI wizard
+
+# Optional: For advanced features
+anthropic>=0.18.0      # Claude API (if Memory Expert needs semantic search)
+requests>=2.31.0       # HTTP requests (for remote config fetching)

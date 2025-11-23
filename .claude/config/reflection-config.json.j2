@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "enabled": {{ enable_reflection_system | default("true") }},
+  "default_mode": "silent",
+  "timeouts": {
+    "quick": 30,
+    "medium": 90,
+    "deep": 180
+  },
+  "thresholds": {
+    "self_score_minimum": 8,
+    "retry_max": 2
+  },
+  "tier1_agents": [
+    "anand-2.0",
+    "atharva-2.0",
+    "sama-2.0",
+    "shawar-2.0",
+    "hitesh-2.0",
+    "harshit-2.0",
+    "vidya-2.0",
+    "varsha-2.0",
+    "debugger"
+  ],
+  "tier2_validator": "ankur-2.0",
+  "reflection_depth_by_agent": {
+    "anand-2.0": "medium",
+    "atharva-2.0": "medium",
+    "sama-2.0": "deep",
+    "shawar-2.0": "deep",
+    "hitesh-2.0": "medium",
+    "harshit-2.0": "quick",
+    "vidya-2.0": "deep",
+    "varsha-2.0": "medium",
+    "debugger": "medium"
+  },
+  "reflection_report_schema": {
+    "agent": "string",
+    "task_id": "string",
+    "self_scores": {
+      "completeness": "1-10",
+      "quality": "1-10",
+      "role_adherence": "1-10"
+    },
+    "decision": "proceed|retry|escalate",
+    "retry_count": "number (max 2)",
+    "ready_for_tier2": "boolean"
+  }
+}

@@ -1,0 +1,161 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Agent Communication Protocol
+
+**ALL AGENTS MUST FOLLOW THIS PROTOCOL:**
+
+### When Completing ANY Task:
+1. **Update Agent Communication Board** (`AGENT_COMMUNICATION_BOARD.md`)
+   - Move task from "In Progress" to "✅ Completed Today"
+   - Add your @agent-name, timestamp, and result
+   - Format: `**[TASK-ID]** Task Description – @agent-name ✅ (timestamp - result summary)`
+
+2. **Update Your Memory File**
+   - Record what was done, outcome, and lessons learned
+   - Location: `.claude/memory/[agent-name]-memory.json`
+
+3. **Why This Matters:**
+   - Other agents need to know what's been completed
+   - {{ admin_email }} needs visibility into progress
+   - Prevents duplicate work
+   - Creates audit trail
+
+**Example Completion Entry:**
+```markdown
+## ✅ Completed Today
+- **[TASK-001]** Feature implementation completed – @anand-2.0 ✅ ({{ current_date }} - All tests passing, deployed to staging)
+```
+
+### When User Changes Direction:
+If {{ admin_email }} asks you to STOP a task and do something else instead:
+
+1. **Update Agent Communication Board** (`AGENT_COMMUNICATION_BOARD.md`)
+   - Move task from "In Progress" to "⏸️ Paused/Cancelled"
+   - Add reason for stopping
+   - Format: `**[TASK-ID]** Task Description – @agent-name ⏸️ (timestamp - Stopped by user: [reason], switched to [new task])`
+
+2. **Update Your Memory File**
+   - Record: task was stopped, why it was stopped, what you learned before stopping
+   - Record: new direction from user
+   - This helps you understand user priorities and patterns
+
+**This is MANDATORY for all agents.**
+
+---
+
+## Project Overview
+
+**{{ project_name }}** - {{ project_description }}
+
+**Architecture:** {{ frontend_framework }} (frontend) + {{ backend_framework }} (backend)
+
+## Common Development Commands
+
+### Frontend Development
+```bash
+# Add your common frontend commands here
+# npm run dev, npm run build, etc.
+```
+
+### Backend Development
+```bash
+# Add your common backend commands here
+# uvicorn, npm start, etc.
+```
+
+## File Placement Rules
+
+This project enforces canonical file structure via automated validation.
+
+**Canonical Structure:** `.claude/structure/canonical-structure.yaml`
+
+**Developer Workflow:**
+1. Install git hooks: `.claude/scripts/install-hooks.sh`
+2. Hooks validate structure on every commit
+3. Fix violations: `python .claude/scripts/auto_fix.py --dry-run` (preview) or `--apply` (fix)
+
+**See:** `.claude/structure/README.md` for complete rules
+
+## Architecture & Code Structure
+
+### Tech Stack
+- **Frontend:** {{ frontend_framework }} with {{ frontend_language }}
+- **Backend:** {{ backend_framework }} with {{ backend_language }}
+- **Deployment:** {{ frontend_platform }} (frontend), {{ backend_platform }} (backend)
+
+### Agent System
+
+This project uses a 15-agent orchestration system. Key agents:
+
+**Orchestrators (Planning, No Execution):**
+- `@atharva-2.0` - Feature orchestrator (DPPM framework)
+- `@bug-fix-orchestrator` - Bug fix coordination
+
+**Executors (Implementation, No Planning):**
+- `@anand-2.0` - Full-stack code executor
+- `@hitesh-2.0` - Frontend specialist
+- `@sama-2.0` - AI/ML engineering
+
+**Validators (Review, No Implementation):**
+- `@ankur-2.0` - Quality gatekeeper (APPROVE/REVISE/FAIL verdicts)
+- `@harshit-2.0` - Test executor (runs tests, reports results)
+
+**Domain Experts:**
+- `@shawar-2.0` - Deployment expert ({{ frontend_platform }}, {{ backend_platform }})
+- `@vidya-2.0` - Solution architect
+- `@varsha-2.0` - UI/UX designer
+- `@debugger` - Bug investigation
+
+**Support:**
+- `@memory-expert` - Memory management & curation
+- `@reflection-expert` - Meta-reflection on agent quality
+- `@documentation-manager` - Documentation lifecycle
+
+**Every agent has:**
+- Strict role boundaries (MUST/MUST NOT guardrails)
+- Skills auto-loading (frontend-design, document-skills, etc.)
+- Permission modes (ask, auto-accept, auto-deny)
+- Persistent memory (learns from past work)
+
+---
+
+## Deployment Architecture
+
+### Environments
+
+**Branch Flow:** `development` (QA) → `staging` (UAT) → `main` (Production)
+
+**Frontend ({{ frontend_platform }}):**
+- Production: {{ frontend_prod_url }}
+- Staging: {{ frontend_staging_url }}
+
+**Backend ({{ backend_platform }}):**
+- Production: {{ backend_prod_url }}
+- Staging: {{ backend_staging_url }}
+
+### Agent for Deployment
+
+**Deployment tasks:** Always delegate to `@shawar-2.0`
+
+Example:
+```
+@shawar-2.0 deploy to production
+```
+
+---
+
+## Documentation References
+
+- **Agent Communication Board:** `AGENT_COMMUNICATION_BOARD.md` - Active task tracking
+- **Structure Enforcement:** `.claude/structure/README.md` - File placement rules
+- **Delegation Protocol:** `.claude/docs/protocols/DELEGATION_PROTOCOL.md` - How agents hand off work
+- **Memory Protocol:** `.claude/docs/protocols/MEMORY_PROTOCOL.md` - Tri-tier memory system
+- **DPPM Framework:** `.claude/docs/methodologies/DPPM_FRAMEWORK.md` - Feature development workflow
+
+---
+
+**Project created:** {{ setup_date }}
+**Tier:** {{ tier }}
+**Admin:** {{ admin_email }}

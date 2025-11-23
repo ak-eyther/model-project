@@ -1,0 +1,42 @@
+{
+  "_comment": "This is a template for agent memory files. Each agent gets their own memory file.",
+  "_instructions": "Copy this template as {agent-name}-memory.json during setup.",
+
+  "agent_name": "agent-name",
+  "version": "2.0",
+  "last_updated": "ISO8601 timestamp",
+
+  "hot_memory": {
+    "_description": "Last 20 events - always loaded for fast context",
+    "recent_events": [],
+    "active_tasks": [],
+    "recent_learnings": []
+  },
+
+  "warm_memory": {
+    "_description": "Events 21-100 - patterns and successful strategies",
+    "patterns": [],
+    "known_issues": [],
+    "successful_strategies": []
+  },
+
+  "cold_memory": {
+    "_description": "Events 101+ - long-term patterns only (no raw details)",
+    "historical_patterns": [],
+    "archived_events_summary": "Brief summary of archived work"
+  },
+
+  "statistics": {
+    "total_tasks_completed": 0,
+    "success_rate": 0.0,
+    "average_task_duration_minutes": 0,
+    "common_task_types": []
+  },
+
+  "preferences": {
+    "_description": "Agent-specific preferences learned over time",
+    "coding_style": {},
+    "testing_approach": {},
+    "documentation_format": {}
+  }
+}
