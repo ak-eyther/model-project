@@ -8,16 +8,47 @@ Bootstrap your next project with a sophisticated multi-agent system, automated q
 
 ## 🚀 Quick Start
 
+### Method 1: Use Template on GitHub (Recommended)
+
+1. Click **"Use this template"** on GitHub
+2. Name your new repository
+3. Clone locally and initialize:
+
+```bash
+git clone https://github.com/your-org/your-new-project.git
+cd your-new-project
+
+# Initialize project context (interactive, takes 5 minutes)
+./.claude/scripts/init-project.sh
+
+# Commit context
+git add .claude/context/project-context.yaml CLAUDE.md
+git commit -m "Initialize project context"
+git push
+```
+
+### Method 2: Clone Manually
+
 ```bash
 # Clone this template
 git clone https://github.com/your-org/claude-code-project-template.git my-awesome-project
 cd my-awesome-project
 
-# Run interactive setup wizard
-python setup.py
+# Initialize project context
+./.claude/scripts/init-project.sh
 
-# That's it! Start working with agents immediately
+# Commit and start working
+git add .claude/context/project-context.yaml CLAUDE.md
+git commit -m "Initialize project context"
 ```
+
+**That's it!** All 15 agents now automatically know your project's:
+- ✅ Name, tech stack, deployment platforms
+- ✅ Production and staging URLs
+- ✅ Domain context (Healthcare, Finance, etc.)
+- ✅ Team structure and repository info
+
+**No manual configuration needed.**
 
 ---
 
@@ -148,6 +179,61 @@ claude-code-project-template/
 - Skills auto-loading (frontend-design, document-skills, etc.)
 - Permission modes (ask, auto-accept, auto-deny)
 - Persistent memory (learns from past work)
+- **Auto-context loading** (inherits project context automatically)
+
+---
+
+## 🔄 Auto-Context System
+
+**Problem:** When creating new projects from this template, agents need to know project-specific context (name, URLs, tech stack). Manual updates across 15 agent files are error-prone.
+
+**Solution:** Single source of truth with automatic context propagation.
+
+### How It Works
+
+1. **Run initialization script once:**
+   ```bash
+   ./.claude/scripts/init-project.sh
+   ```
+
+2. **Answer prompts:**
+   - Project name, slug, description
+   - Tech stack (React/Vue, FastAPI/Express, etc.)
+   - Deployment (Vercel, Railway, AWS, etc.)
+   - URLs, domain context
+
+3. **Script generates:** `.claude/context/project-context.yaml`
+
+4. **All agents auto-load this file** via frontmatter:
+   ```yaml
+   context:
+     inherit: ".claude/context/project-context.yaml"
+   ```
+
+5. **Variables interpolated automatically:**
+   - `{{ project.name }}` → "Medical Claims RAG"
+   - `{{ tech_stack.frontend.framework }}` → "React"
+   - `{{ deployment.backend.platform }}` → "Railway"
+
+**Result:** Every agent knows your project without manual updates!
+
+### Available Commands
+
+```bash
+# Initialize new project context
+./.claude/scripts/init-project.sh
+
+# Validate context completeness
+./.claude/scripts/validate-context.sh
+
+# Add context to agent files (auto-run during init)
+./.claude/scripts/add-context-to-agents.sh
+```
+
+### Documentation
+
+- **Complete Guide:** [`.claude/docs/guides/AUTO_CONTEXT_SYSTEM.md`](.claude/docs/guides/AUTO_CONTEXT_SYSTEM.md)
+- **Context Schema:** [`.claude/context/project-context.yaml`](.claude/context/project-context.yaml)
 
 ---
 
