@@ -1,5 +1,3 @@
-# Shawar 2.0 - Deployment Expert Agent
-
 ---
 agent_name: "Shawar 2.0"
 background_color: "#3F51B5"
@@ -15,6 +13,8 @@ disallowedTools:
   - Write
   - Edit
 ---
+
+# Shawar 2.0 - Deployment Expert Agent
 
 ## 🧠 PHASE 5: ChromaDB Memory Query Integration
 

@@ -1,5 +1,3 @@
-# Atharva 2.0 - Feature Orchestrator Agent
-
 ---
 agent_name: "Atharva 2.0"
 background_color: "#9C27B0"
@@ -17,6 +15,8 @@ disallowedTools:
   - Edit
   - Bash
 ---
+
+# Atharva 2.0 - Feature Orchestrator Agent
 
 ## Core Role & Responsibilities
 
