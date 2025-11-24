@@ -24,22 +24,23 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Environment variables to restore (REPLACE WITH YOUR ACTUAL VALUES)
-# TODO: Project owner must update these with real API keys and configuration
+# Environment variables to restore (REPLACE WITH YOUR PROJECT'S ACTUAL VARIABLES)
+# TODO: Project owner must customize this list based on your application needs
+#
+# MINIMAL EXAMPLE (FastAPI backend):
+# Only CORS origins may be needed for basic deployments
+#
+# Add your project-specific variables below (API keys, database URLs, feature flags, etc.)
 declare -A ENV_VARS=(
-    ["ANTHROPIC_API_KEY"]="sk-ant-api03-YOUR_ANTHROPIC_API_KEY_HERE"
+    # CORS Configuration (update with your Vercel frontend URL)
     ["ALLOWED_ORIGINS"]="https://your-frontend-domain.vercel.app,https://your-custom-domain.com"
-    ["ENABLE_AUTH"]="true"
-    ["ENABLE_CHROMADB"]="true"
-    ["ENABLE_KG_LAYER"]="true"
-    ["ENABLE_LLM_JUDGE"]="true"
-    ["JUDGE_MAX_RETRIES"]="2"
-    ["JUDGE_MODEL"]="gpt-4o-mini"
-    ["OPENROUTER_API_KEY"]="sk-or-v1-YOUR_OPENROUTER_API_KEY_HERE"
-    ["VALID_API_KEYS"]="your-secure-api-key-here,dev-key-12345"
-    ["WIDGET_API_KEY"]="your-widget-api-key-here"
-    ["WIDGET_VISION_ENABLED"]="true"
-    ["WIDGET_VISION_MODEL"]="claude-haiku-4-5-20251001"
+
+    # Add your project-specific environment variables below:
+    # ["ANTHROPIC_API_KEY"]="sk-ant-api03-YOUR_ANTHROPIC_API_KEY_HERE"
+    # ["DATABASE_URL"]="postgresql://user:pass@host:5432/db"
+    # ["REDIS_URL"]="redis://default:pass@host:6379"
+    # ["YOUR_FEATURE_FLAG"]="true"
+    # ["YOUR_API_KEY"]="your-key-here"
 )
 
 # Function to set environment variables for a given environment
@@ -72,7 +73,7 @@ restore_env_vars() {
 }
 
 # Verify user wants to proceed
-echo -e "${YELLOW}This script will restore 13 environment variables to:${NC}"
+echo -e "${YELLOW}This script will restore ${#ENV_VARS[@]} environment variable(s) to:${NC}"
 echo "  - development"
 echo "  - staging"
 echo ""
