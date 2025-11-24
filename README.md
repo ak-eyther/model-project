@@ -69,6 +69,27 @@ uvicorn main:app --reload
 
 ---
 
+## 🔐 Security Notice - API Keys
+
+**⚠️ IMPORTANT:** This template contains **placeholder API keys only**. Before deploying:
+
+1. **Get your own API keys:**
+   - Anthropic Claude: https://console.anthropic.com/settings/keys
+   - OpenRouter (optional): https://openrouter.ai/keys
+
+2. **Where to add them:**
+   - **Railway:** Dashboard → Environment Variables
+   - **Vercel:** Dashboard → Environment Variables
+   - **Local development:** Copy `.env.example` to `.env.local`
+
+3. **Files with placeholders:**
+   - `.claude/scripts/restore-railway-env-vars.sh` - Railway restoration script
+   - `.env.example` - Local development template
+
+**Never commit real API keys to git.** Use environment variables in your deployment platform.
+
+---
+
 ## 🎯 What You Get
 
 This template extracts the complete infrastructure from a production project and gives you:
