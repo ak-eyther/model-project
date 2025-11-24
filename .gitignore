@@ -68,3 +68,23 @@ AGENT_COMMUNICATION_BOARD.md
 !.claude/structure/canonical-structure.yaml.j2
 !.claude/config/*.yaml.j2
 !.claude/config/*.json.j2
+
+# Internal build/implementation documentation (not for template users)
+.claude/docs/implementation/
+.claude/PLUGIN_TEST_*.md
+.claude/ENABLED_PLUGIN_CAPABILITIES.md
+.claude/PLUGIN_SUB_AGENT_INVOCATION_TEST.md
+MEMORY_DEBUGGING_START_HERE.md
+MEMORY_LEAK_DEBUGGING_GUIDE.md
+MEMORY_LEAK_QUICK_REFERENCE.md
+OBSERVABILITY_METRICS.md
+README_MEMORY_TOOLKIT.md
+SETUP_COMPLETE.md
+TOOLKIT_SUMMARY.txt
+design-specs/
+fastapi_memory_monitor.py
+memory_debug_toolkit.py
+database/
+
+# Temporary/untracked plugin scripts
+.claude/scripts/fix-plugin-agents.py
