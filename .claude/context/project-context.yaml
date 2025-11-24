@@ -1,90 +1,17 @@
-# Project Context Configuration
-# This file contains all project-specific variables used by agents
-# Auto-generated during project initialization via .claude/scripts/init-project.sh
-# All agents reference this file for automatic context loading
-
+# Project Context - All sub-sub-agents load this automatically
 project:
-  name: "Claude Code Project Template"
-  slug: "claude-code-project-template"
-  description: "A production-ready application template with 15-agent orchestration system"
-  root: "/Users/arifkhan/claude-code-project-template"
-  created: "2025-11-23T21:25:08.123956"
-  tier: "complete"  # starter | essential | complete
-  admin: "arif.khan@vitraya.com"
+  name: "claude-code-project-template"
+  creator: "Arif Khan"
+  creator_email: "arif.khan@vitraya.com"
 
 tech_stack:
   frontend:
     framework: "React"
-    version: "18.2.0"
-    language: "TypeScript"
-    styling: "Tailwind CSS"
-    build_tool: "Vite"
-
   backend:
     framework: "FastAPI"
-    version: "0.104.0"
-    language: "Python"
-    version_python: "3.11"
-    database: null  # PostgreSQL, MongoDB, etc. (null if not using)
-
-  ai:
-    provider: "Anthropic"
-    model: "claude-sonnet-4"
-    use_case: "AI-powered application development"
 
 deployment:
   frontend:
     platform: "Vercel"
-    production_url: "https://claude-code-project-template.vercel.app"
-    staging_url: "https://claude-code-project-template-staging.vercel.app"
-
   backend:
     platform: "Railway"
-    production_url: "https://claude-code-project-template-production.up.railway.app"
-    staging_url: "https://claude-code-project-template-staging.up.railway.app"
-
-environments:
-  development: "development"
-  staging: "staging"
-  production: "main"
-
-domain_context:
-  industry: "Technology"
-  domain: "Software Development"
-  users: "Developers using Claude Code"
-  sensitivity: "Standard security practices"
-  key_entities:
-    - "Agents"
-    - "Skills"
-    - "Workflows"
-    - "Documentation"
-
-repository:
-  github_url: "https://github.com/arifkhan/claude-code-project-template"
-  main_branch: "master"
-  protected_branches:
-    - "main"
-    - "staging"
-    - "development"
-
-team:
-  product_owner: "arif.khan@vitraya.com"
-  tech_lead: "arif.khan@vitraya.com"
-  timezone: "UTC"
-
-quality_standards:
-  typescript_strict: true
-  test_coverage_min: 80
-  bundle_size_max: "500KB"
-  accessibility: "WCAG 2.1 AA"
-  security:
-    - "Input validation"
-    - "XSS prevention"
-    - "CORS restrictions"
-    - "No hardcoded secrets"
-
-# Template metadata (do not modify in new projects)
-template:
-  version: "1.0.0"
-  source: "https://github.com/arifkhan/claude-code-project-template"
-  initialized: false  # Changed to true by init-project.sh

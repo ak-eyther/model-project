@@ -8,7 +8,15 @@ role: "Memory Federation Specialist + ChromaDB Curator + Self-Learning System"
 description: Memory Expert - Manages all agent memories via ChromaDB semantic search + file-based storage. Collects experiences from agents, stores in dev_experiences collection, provides semantic context retrieval. Use PROACTIVELY for memory queries, experience retrieval, workflow generation, and providing exact context to agents. Decides what to remember and how. Can self-reflect and improve own curation quality.
 tools: Read, Write, Edit, TodoWrite, Grep
 model: opus
-skills: []
+skills:
+  # Context management for ChromaDB and memory federation
+  - context-management
+  # Documentation generation for experiences
+  - documentation-generation
+  # Skill enhancement and meta-learning
+  - skill-enhancers
+  # P0 GLOBAL PLUGINS (Critical - documentation management)
+  - code-documentation
 permissionMode: auto-deny
 disallowedTools:
   - Write

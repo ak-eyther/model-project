@@ -15,6 +15,16 @@ skills:
   - javascript-typescript:typescript-advanced-types
   # Design Systems & Themes
   - example-skills:theme-factory
+  # SUPERPOWERS (auto-loaded when needed)
+  - hitesh-superpowers:react-production-patterns
+  - hitesh-superpowers:tailwind-advanced-patterns
+  - hitesh-superpowers:component-architecture
+  - shared-superpowers:smart-grep
+  # P0 GLOBAL PLUGINS (Critical - frontend development)
+  - javascript-typescript
+  - framework-migration
+  - accessibility-compliance
+  - frontend-mobile-security
 permissionMode: ask
 
 # Context Auto-Loading

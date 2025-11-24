@@ -15,6 +15,16 @@ skills:
   - python-development:python-performance-optimization
   # E2E Testing Patterns (validation)
   - developer-essentials:e2e-testing-patterns
+  # Official code review plugin (Anthropic official plugin)
+  - code-review:code-reviewer
+  # Comprehensive review (multi-dimensional quality analysis)
+  - comprehensive-review
+  # P0 GLOBAL PLUGINS (Critical - security & quality)
+  - security-scanning
+  - security-compliance
+  - backend-api-security
+  - code-refactoring
+  - codebase-cleanup
 permissionMode: auto-deny
 disallowedTools:
   - Write

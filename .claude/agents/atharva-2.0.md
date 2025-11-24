@@ -14,6 +14,15 @@ skills:
   - git-workflows:git-advanced-workflows
   # Architecture patterns (understanding system design for planning)
   - backend-development:architecture-patterns
+  # Educational explanations during planning (Anthropic official plugin)
+  - explanatory-output-style
+  # Feature development workflows (DPPM framework support)
+  - feature-dev:feature-dev
+  # P0 GLOBAL PLUGINS (Critical - orchestration & planning)
+  - agent-orchestration
+  - full-stack-orchestration
+  - documentation-generation
+  - code-documentation
 permissionMode: auto-deny
 disallowedTools:
   - Write

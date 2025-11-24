@@ -1,0 +1,16 @@
+# Codex Repo Profile
+name: claude-code-project-template
+languages: [python, shell, markdown]
+python_version: "3.8+"
+
+entrypoints:
+  setup_wizard: "python setup.py"
+  full_validation: "python tests/validate_setup.py"
+  structure_check: "python .claude/scripts/structure_validator.py"
+  agent_skills_check: "./.claude/scripts/validate-agent-skills.sh"
+
+notes:
+  - Keep scripts portable (no hardcoded absolute paths); ensure shell scripts use set -e and quoted vars.
+  - Templates rely on Jinja2; leave placeholders only in *.j2 files, and verify rendered outputs contain no `{{ }}`.
+  - Git hooks must stay executable after changes (`./.claude/scripts/install-hooks.sh` if needed).
+  - Dependencies: install via `pip install -r requirements.txt` when running the wizard or validators locally.

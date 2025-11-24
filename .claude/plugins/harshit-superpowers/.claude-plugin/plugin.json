@@ -1,0 +1,19 @@
+{
+  "name": "harshit-superpowers",
+  "version": "1.0.0",
+  "description": "Testing execution superpowers for @harshit-2.0. Provides Playwright E2E patterns, performance testing, and pytest backend testing guidance.",
+  "author": {
+    "name": "Arif Khan",
+    "email": "arif.khan@vitraya.com"
+  },
+  "license": "MIT",
+  "skills": {
+    "paths": ["${CLAUDE_PLUGIN_ROOT}/skills"]
+  },
+  "agents": {
+    "paths": ["${CLAUDE_PLUGIN_ROOT}/agents"]
+  },
+  "targetAgents": [
+    "harshit-2.0"
+  ]
+}

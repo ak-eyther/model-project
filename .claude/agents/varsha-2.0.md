@@ -16,6 +16,9 @@ skills:
   - example-skills:theme-factory
   # WCAG accessibility guidelines
   - accessibility:wcag-compliance
+  # P0 GLOBAL PLUGINS (Critical - design & accessibility)
+  - accessibility-compliance
+  - code-documentation
 permissionMode: auto-deny
 disallowedTools:
   - Write

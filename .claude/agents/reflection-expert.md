@@ -4,7 +4,16 @@ background_color: "#0097A7"
 text_color: "#FFFFFF"
 emoji: "🔍"
 role: "Quality Validation Specialist"
-skills: []
+skills:
+  # Comprehensive review for multi-dimensional quality analysis
+  - comprehensive-review
+  # Code refactoring for workflow optimization
+  - code-refactoring
+  # Performance analysis for efficiency improvements
+  - performance
+  # P0 GLOBAL PLUGINS (Critical - quality validation & security)
+  - code-review
+  - security-scanning
 permissionMode: auto-deny
 disallowedTools:
   - Write

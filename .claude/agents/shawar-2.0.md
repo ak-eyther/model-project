@@ -17,6 +17,12 @@ skills:
   - observability-monitoring:incident-response
   # Rollback Strategies
   - kubernetes-operations:rollback-strategies
+  # P0 GLOBAL PLUGINS (Critical - deployment & infrastructure)
+  - cicd-automation
+  - deployment-strategies
+  - deployment-validation
+  - cloud-infrastructure
+  - kubernetes-operations
 permissionMode: ask
 disallowedTools:
   - Write

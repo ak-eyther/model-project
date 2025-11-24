@@ -1,54 +1,71 @@
 # Claude Code Project Template
 
-> **Production-ready agent orchestration infrastructure for any project**
+> **🎯 Your universal starting point for any new project**
 
-Bootstrap your next project with a sophisticated multi-agent system, automated quality gates, structure enforcement, and battle-tested workflows — all in one command.
+Transform this template into your custom project in 5 minutes. Includes Next.js 14 + FastAPI, 15 AI agents, auto-setup scripts, and intelligent project customization that configures everything for your specific use case.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start - Start Your New Project
 
-### Method 1: Use Template on GitHub (Recommended)
-
-1. Click **"Use this template"** on GitHub
-2. Name your new repository
-3. Clone locally and initialize:
+### Step 1: Clone This Template
 
 ```bash
-git clone https://github.com/your-org/your-new-project.git
-cd your-new-project
+# Use as template on GitHub (recommended)
+# → Click "Use this template" button on GitHub
+# → Clone your new repository
 
-# Initialize project context (interactive, takes 5 minutes)
-./.claude/scripts/init-project.sh
-
-# Commit context
-git add .claude/context/project-context.yaml CLAUDE.md
-git commit -m "Initialize project context"
-git push
+# OR clone directly
+git clone https://github.com/your-org/claude-code-project-template.git my-new-project
+cd my-new-project
 ```
 
-### Method 2: Clone Manually
+### Step 2: One-Command Setup
 
 ```bash
-# Clone this template
-git clone https://github.com/your-org/claude-code-project-template.git my-awesome-project
-cd my-awesome-project
-
-# Initialize project context
-./.claude/scripts/init-project.sh
-
-# Commit and start working
-git add .claude/context/project-context.yaml CLAUDE.md
-git commit -m "Initialize project context"
+./setup.sh
 ```
 
-**That's it!** All 15 agents now automatically know your project's:
-- ✅ Name, tech stack, deployment platforms
-- ✅ Production and staging URLs
-- ✅ Domain context (Healthcare, Finance, etc.)
-- ✅ Team structure and repository info
+**What happens:**
+1. ✅ Checks Node.js 18+ and Python 3.8+ installed
+2. ✅ Installs all dependencies (Next.js + FastAPI packages)
+3. ✅ Launches interactive wizard (customizes for YOUR project)
 
-**No manual configuration needed.**
+**The wizard asks:**
+- Project name (e.g., "Task Manager Pro")
+- Tech stack (Next.js + FastAPI by default)
+- Deployment platforms (Vercel + Railway)
+- Domain/industry (Healthcare, SaaS, E-commerce, etc.)
+- Author info
+
+**What gets customized:**
+- ✅ `package.json` → Your project name/description
+- ✅ `app/layout.tsx` → Page titles and metadata
+- ✅ `main.py` → API title and description
+- ✅ `.claude/context/project-context.yaml` → All 15 agents know your project
+- ✅ `README.md` → Updated with your project details
+
+### Step 3: Start Developing
+
+```bash
+# Terminal 1 - Frontend
+npm run dev
+# → http://localhost:3000
+
+# Terminal 2 - Backend
+uvicorn main:app --reload
+# → http://localhost:8000
+# → API docs: http://localhost:8000/docs
+```
+
+**That's it!** In 5 minutes you have:
+- ✅ Fully configured Next.js + FastAPI project
+- ✅ 15 AI agents that know your project context
+- ✅ Beautiful landing page with your project name
+- ✅ Working health check endpoints
+- ✅ Auto-generated API documentation
+
+**See [QUICK_START_NEW_PROJECT.md](QUICK_START_NEW_PROJECT.md) for detailed guide.**
 
 ---
 
@@ -211,8 +228,8 @@ claude-code-project-template/
    ```
 
 5. **Variables interpolated automatically:**
-   - `{{ project.name }}` → "Medical Claims RAG"
-   - `{{ tech_stack.frontend.framework }}` → "React"
+   - `{{ project.name }}` → "Task Manager Pro"
+   - `{{ tech_stack.frontend.framework }}` → "Next.js"
    - `{{ deployment.backend.platform }}` → "Railway"
 
 **Result:** Every agent knows your project without manual updates!
@@ -220,7 +237,10 @@ claude-code-project-template/
 ### Available Commands
 
 ```bash
-# Initialize new project context
+# Initialize new project context (Quick wizard)
+python3 init-project.py
+
+# Initialize new project context (Full wizard)
 ./.claude/scripts/init-project.sh
 
 # Validate context completeness
@@ -234,6 +254,7 @@ claude-code-project-template/
 
 - **Complete Guide:** [`.claude/docs/guides/AUTO_CONTEXT_SYSTEM.md`](.claude/docs/guides/AUTO_CONTEXT_SYSTEM.md)
 - **Context Schema:** [`.claude/context/project-context.yaml`](.claude/context/project-context.yaml)
+- **Wizard Comparison:** [`INITIALIZATION_WIZARDS.md`](INITIALIZATION_WIZARDS.md)
 
 ---
 
@@ -298,14 +319,28 @@ Running setup validation...
 
 ## 📦 Requirements
 
-- **Python 3.8+** (for setup wizard and automation scripts)
+### System Requirements
+- **Node.js 18+** (for Next.js frontend)
+- **Python 3.8+** (for FastAPI backend and automation scripts)
 - **Git** (for hooks and version control)
 - **Claude Code v2.0.43+** (for skills auto-loading)
 
-Python packages (auto-installed):
+### Dependencies (Auto-Installed via `./setup.sh`)
+
+**Node.js packages (via npm):**
+- `next` - Next.js framework
+- `react`, `react-dom` - React library
+- `typescript` - TypeScript compiler
+- `tailwindcss` - CSS framework
+- `playwright` - E2E testing
+- `eslint` - Code linting
+
+**Python packages (via pip):**
 - `PyYAML` - Configuration parsing
 - `jinja2` - Template rendering
 - `questionary` - Interactive wizard
+- `anthropic` - Claude API (optional)
+- `requests` - HTTP requests (optional)
 
 ---
 
@@ -326,7 +361,7 @@ MIT License - See [LICENSE](LICENSE)
 
 ## 🙏 Credits
 
-This template extracts infrastructure from the **LCT Medical Claims Q&A Widget** project, which pioneered:
+This template is built on production-tested patterns from real-world projects, which pioneered:
 - Multi-agent orchestration (15 specialized agents)
 - Tri-tier memory system
 - Silent reflection quality gates
@@ -337,9 +372,13 @@ This template extracts infrastructure from the **LCT Medical Claims Q&A Widget**
 
 ## 🚀 Next Steps
 
-1. **Run setup:** `python setup.py`
-2. **Read quick start:** [docs/QUICK_START_STANDARD.md](docs/QUICK_START_STANDARD.md)
-3. **Invoke your first agent:** `@anand-2.0 help me get started`
-4. **Make a test commit** to verify git hooks work
+1. **Run setup:** `./setup.sh` (installs all dependencies)
+2. **Initialize project:** `./.claude/scripts/init-project.sh`
+3. **Start development:**
+   - Frontend: `npm run dev` (Next.js on http://localhost:3000)
+   - Backend: `uvicorn main:app --reload` (FastAPI on http://localhost:8000)
+4. **Read quick start:** [docs/QUICK_START_STANDARD.md](docs/QUICK_START_STANDARD.md)
+5. **Invoke your first agent:** `@anand-2.0 help me get started`
+6. **Make a test commit** to verify git hooks work
 
 **Welcome to production-grade agent orchestration!** 🎉

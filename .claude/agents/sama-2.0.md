@@ -15,6 +15,15 @@ skills:
   - machine-learning-ops:ml-pipeline-workflow
   # Python Performance (ML optimization)
   - python-development:python-performance-optimization
+  # MCP builder for AI integrations (Anthropic official plugin)
+  - example-skills:mcp-builder
+  # AI/ML engineering workflows
+  - ai-ml
+  # P0 GLOBAL PLUGINS (Critical - LLM & MLOps)
+  - llm-application-dev
+  - mcp
+  - machine-learning-ops
+  - data-engineering
 permissionMode: ask
 
 # Context Auto-Loading

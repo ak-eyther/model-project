@@ -18,6 +18,16 @@ skills:
   - cloud-infrastructure:terraform-module-library
   # Documentation (ADRs, Architecture Digest)
   - document-skills:docx
+  # Educational explanations for architecture decisions (Anthropic official plugin)
+  - explanatory-output-style
+  # Database design and optimization
+  - database-design
+  # Systems programming patterns
+  - systems-programming
+  # P0 GLOBAL PLUGINS (Critical - architecture & infrastructure)
+  - cloud-infrastructure
+  - backend-development
+  - api-development
 permissionMode: auto-deny
 disallowedTools:
   - Write

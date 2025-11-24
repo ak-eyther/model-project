@@ -26,6 +26,21 @@ ENV/
 env/
 .venv
 
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+.swc/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables (SECURITY: Never commit secrets!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # IDE
 .vscode/
 .idea/

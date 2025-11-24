@@ -1,5 +1,11 @@
 # Claude Code Project Template - Python Dependencies
 
+# FastAPI Backend
+fastapi>=0.109.0       # FastAPI framework
+uvicorn[standard]>=0.27.0  # ASGI server
+python-multipart>=0.0.6    # Form data parsing
+pydantic>=2.5.0        # Data validation
+
 # Core dependencies for setup wizard and automation
 PyYAML>=6.0.1          # Configuration file parsing
 jinja2>=3.1.2          # Template rendering (placeholders → actual values)

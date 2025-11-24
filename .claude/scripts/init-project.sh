@@ -40,8 +40,8 @@ fi
 # Collect project information
 echo "📋 Project Information"
 echo "---------------------"
-read -p "Project Name (e.g., Medical Claims RAG): " project_name
-read -p "Project Slug (kebab-case, e.g., medical-claims-rag): " project_slug
+read -p "Project Name (e.g., Task Manager Pro): " project_name
+read -p "Project Slug (kebab-case, e.g., task-manager-pro): " project_slug
 read -p "Project Description: " project_description
 read -p "Project Root (full path, default: $PROJECT_ROOT): " project_root
 project_root=${project_root:-$PROJECT_ROOT}
@@ -135,11 +135,11 @@ read -p "Staging Backend URL (e.g., https://myapp-staging.up.railway.app): " sta
 echo ""
 echo "🏥 Domain Context (optional, press Enter to skip)"
 echo "------------------------------------------------"
-read -p "Industry (e.g., Healthcare, Finance, E-commerce): " industry
+read -p "Industry (e.g., SaaS, Finance, E-commerce, Healthcare): " industry
 industry=${industry:-Technology}
-read -p "Domain (e.g., Medical Claims, Payment Processing): " domain
+read -p "Domain (e.g., Task Management, Payment Processing, Content Management): " domain
 domain=${domain:-Software Development}
-read -p "Target Users (e.g., Medical reviewers, Financial analysts): " users
+read -p "Target Users (e.g., Project managers, Financial analysts, Content creators): " users
 users=${users:-General users}
 read -p "Sensitivity/Compliance (e.g., HIPAA, GDPR, SOC2): " sensitivity
 sensitivity=${sensitivity:-Standard security practices}

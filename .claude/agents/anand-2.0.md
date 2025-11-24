@@ -17,6 +17,20 @@ skills:
   - developer-essentials:error-handling-patterns
   # Modern TypeScript (advanced types, modern JS patterns)
   - javascript-typescript:typescript-advanced-types
+  # Learning output style (educational mode - Anthropic official plugin)
+  - learning-output-style
+  # SUPERPOWERS (auto-loaded when needed - 90% lightweight, 10% heavy)
+  - anand-superpowers:nextjs-app-router-patterns
+  - anand-superpowers:fastapi-production-patterns
+  - anand-superpowers:smart-grep
+  - shared-superpowers:smart-grep
+  # P0 GLOBAL PLUGINS (Critical - comprehensive tools)
+  - code-review
+  - security-scanning
+  - backend-development
+  - api-development
+  - database
+  - database-migrations
 permissionMode: ask
 
 # Context Auto-Loading

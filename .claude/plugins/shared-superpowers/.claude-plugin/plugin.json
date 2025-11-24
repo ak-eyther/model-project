@@ -1,0 +1,24 @@
+{
+  "name": "shared-superpowers",
+  "version": "1.0.0",
+  "description": "Universal superpowers for all agents. Provides smart-grep, memory management, structure enforcement, agent communication, and project context setup.",
+  "author": {
+    "name": "Arif Khan",
+    "email": "arif.khan@vitraya.com"
+  },
+  "license": "MIT",
+  "skills": {
+    "paths": ["${CLAUDE_PLUGIN_ROOT}/skills"]
+  },
+  "targetAgents": [
+    "anand-2.0",
+    "atharva-2.0",
+    "hitesh-2.0",
+    "harshit-2.0",
+    "shawar-2.0",
+    "ankur-2.0",
+    "sama-2.0",
+    "vidya-2.0",
+    "varsha-2.0"
+  ]
+}
