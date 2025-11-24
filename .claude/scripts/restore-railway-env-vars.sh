@@ -1,6 +1,16 @@
 #!/bin/bash
 # Railway Environment Variables Restoration Script
 # Restores all critical env vars from production to staging and development
+#
+# ⚠️ IMPORTANT FOR TEMPLATE USERS:
+# This script contains PLACEHOLDER API keys. Before using:
+# 1. Get your own Anthropic API key from: https://console.anthropic.com/settings/keys
+# 2. Get your own OpenRouter API key from: https://openrouter.ai/keys
+# 3. Replace ALL placeholder values in the ENV_VARS array below
+# 4. Update ALLOWED_ORIGINS with your actual domain names
+# 5. Generate secure VALID_API_KEYS and WIDGET_API_KEY values
+#
+# ⚠️ NEVER commit real API keys to git. Use environment variables in Railway instead.
 
 set -e
 
@@ -14,19 +24,20 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Environment variables to restore (from production backup)
+# Environment variables to restore (REPLACE WITH YOUR ACTUAL VALUES)
+# TODO: Project owner must update these with real API keys and configuration
 declare -A ENV_VARS=(
-    ["ANTHROPIC_API_KEY"]="***REMOVED***"
-    ["ALLOWED_ORIGINS"]="https://edit-widget-new.vercel.app,https://edit-widget.vercel.app,https://*.vitraya.com,https://lct-widget-demo.vercel.app"
+    ["ANTHROPIC_API_KEY"]="sk-ant-api03-YOUR_ANTHROPIC_API_KEY_HERE"
+    ["ALLOWED_ORIGINS"]="https://your-frontend-domain.vercel.app,https://your-custom-domain.com"
     ["ENABLE_AUTH"]="true"
     ["ENABLE_CHROMADB"]="true"
     ["ENABLE_KG_LAYER"]="true"
     ["ENABLE_LLM_JUDGE"]="true"
     ["JUDGE_MAX_RETRIES"]="2"
     ["JUDGE_MODEL"]="gpt-4o-mini"
-    ["OPENROUTER_API_KEY"]="***REMOVED***"
-    ["VALID_API_KEYS"]="medq-widget-prod-2025-secure,dev-key-12345"
-    ["WIDGET_API_KEY"]="medq-widget-prod-2025-secure"
+    ["OPENROUTER_API_KEY"]="sk-or-v1-YOUR_OPENROUTER_API_KEY_HERE"
+    ["VALID_API_KEYS"]="your-secure-api-key-here,dev-key-12345"
+    ["WIDGET_API_KEY"]="your-widget-api-key-here"
     ["WIDGET_VISION_ENABLED"]="true"
     ["WIDGET_VISION_MODEL"]="claude-haiku-4-5-20251001"
 )
