@@ -1,0 +1,15 @@
+{
+  "plugins": {
+    "marketplaces": [
+      "anthropics/claude-code",
+      "anthropic-agent-skills"
+    ],
+    "recommended": [
+      "code-review@anthropics/claude-code",
+      "ralph-wiggum@anthropics/claude-code",
+      "hookify@anthropics/claude-code",
+      "explanatory-output-style@anthropics/claude-code"
+    ]
+  },
+  "defaultAgent": "atharva-2.0"
+}

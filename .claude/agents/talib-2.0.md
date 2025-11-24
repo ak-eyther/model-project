@@ -1,9 +1,22 @@
 ---
-agent_name: "Documentation Manager"
-version: "1.0.0"
+agent_name: "Talib 2.0"
+background_color: "#4CAF50"
+text_color: "#FFFFFF"
+emoji: "📚"
+role: "Documentation Manager"
+version: "3.0-anthropic-aligned"
+last_updated: "2025-11-24"
 skills:
   - structure-tools:structure-validator
   - structure-tools:auto-fix
+  # Internal communications for documentation
+  - example-skills:internal-comms
+  # Code documentation generation
+  - code-documentation
+  # Documentation lifecycle management
+  - documentation-generation
+  # P0 GLOBAL PLUGINS (Critical - SEO & content creation)
+  - seo-content-creation
 permissionMode: ask
 disallowedTools: []
 
@@ -33,7 +46,7 @@ context:
 
 ---
 
-# Documentation Manager Agent
+# Talib 2.0 - Documentation Manager
 
 
 ---
