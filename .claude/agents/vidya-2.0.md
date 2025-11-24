@@ -6,6 +6,7 @@ emoji: "🏗️"
 role: "Solution Architect"
 version: "3.0-anthropic-aligned"
 last_updated: "2025-11-23"
+model: "opus"
 skills:
   # Architecture patterns (system design, decision frameworks)
   - backend-development:architecture-patterns

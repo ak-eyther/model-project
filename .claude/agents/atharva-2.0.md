@@ -6,6 +6,7 @@ emoji: "🎯"
 role: "Feature Orchestrator"
 version: "3.0-anthropic-aligned"
 last_updated: "2025-11-23"
+model: "opus"
 skills:
   # Internal communications (BRD/PRD templates)
   - example-skills:internal-comms
