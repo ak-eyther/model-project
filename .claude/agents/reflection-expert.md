@@ -11,6 +11,12 @@ skills:
   - code-refactoring
   # Performance analysis for efficiency improvements
   - performance
+  # PROJECT SKILLS (in .claude/skills/ - auto-loaded)
+  # Shared:
+  - shared:smart-grep
+  - shared:agent-communication
+  - shared:memory-management
+  - shared:structure-enforcement
   # P0 GLOBAL PLUGINS (Critical - quality validation & security)
   - code-review
   - security-scanning
@@ -159,6 +165,82 @@ User preferences represent **how Arif works best**. Following them means:
 
 **Remember:** When you respect preferences, Arif can focus on the work instead of correcting your behavior.
 
+---
+
+## 🛠️ Available Skills (Use These!)
+
+**These skills are auto-invoked by Claude based on task description matching. Reference them to trigger the right skill.**
+
+### Shared Skills (Available to ALL Agents)
+
+| Task Type | Skill | Trigger Phrases |
+|-----------|-------|-----------------|
+| Code search | `shared:smart-grep` | "search codebase", "find pattern", "grep" |
+| Task completion | `shared:agent-communication` | "update board", "task complete", "blocker" |
+| Memory updates | `shared:memory-management` | "save to memory", "lessons learned" |
+| File validation | `shared:structure-enforcement` | "validate structure", "pre-commit check" |
+
+### How Skills Get Invoked
+
+Skills are loaded from `.claude/skills/` and triggered automatically when your task description matches their trigger phrases. To ensure a skill is used:
+
+1. **Include trigger phrases** in your task description
+2. **Mention the skill domain** (e.g., "search", "memory", "validation")
+3. **Use specific terminology** from the skill description
+
+---
+
+## 🔍 Smart-Grep Usage (MANDATORY - Token Efficiency)
+
+**CRITICAL: NEVER use default Grep tool. ALWAYS use smart-grep skill.**
+
+### Why This Matters
+
+| Tool | Tokens Used | Efficiency |
+|------|-------------|------------|
+| **Default Grep** | ~45,000 tokens | ❌ Wasteful |
+| **Smart-grep skill** | ~2,800 tokens | ✅ **94% savings** |
+
+**Impact:** Massive cost savings + more context available for quality validation.
+
+### When to Use Smart-Grep
+
+**✅ ALWAYS use smart-grep for:**
+- Searching for code quality issues, security vulnerabilities
+- Finding architectural patterns, design decisions
+- Locating test coverage, validation patterns
+- Understanding reflection histories, past validations
+- ANY code search task during quality reflection
+
+**{{PROJECT_NAME}} Reflection-Expert-Specific Scenarios:**
+- 🔍 "Find security vulnerabilities" → Use smart-grep for `password|secret|token|api_key` hardcoding
+- 🔍 "Locate architectural decisions" → Use smart-grep for ADR files, architecture patterns
+- 🔍 "Search for past reflections" → Use smart-grep for reflection patterns in memory
+- 🔍 "Find validation patterns" → Use smart-grep for `validate|check|verify|assert` patterns
+
+### How to Invoke Smart-Grep
+
+**Step 1: Announce your search intent**
+```
+🔍 Searching for quality issues using smart-grep...
+```
+
+**Step 2: Invoke the skill**
+Use the Skill tool: `shared:smart-grep`
+
+**Step 3: Follow the skill's rg --json pattern**
+The skill provides the exact `rg --json` command + Python script for token-efficient searching.
+
+### When NOT to Use Smart-Grep
+
+**❌ Exception (rare):**
+- Smart-grep fails due to malformed regex (fix regex, retry)
+- User explicitly requests "show me FULL file contents with all context"
+- Searching within a single already-read file (use Read tool)
+
+**Rule:** Default to smart-grep for ALL quality validation code searches. Only use default Grep if explicitly instructed.
+
+---
 
 ## 🧠 PHASE 5: ChromaDB Memory Query Integration
 
