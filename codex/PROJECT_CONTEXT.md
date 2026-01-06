@@ -1,0 +1,19 @@
+# Project Context (Fill In)
+
+Use this file to populate placeholders across `codex/skills/*`.
+Replace the `{{PLACEHOLDER}}` values with real project details.
+
+PROJECT_NAME: {{PROJECT_NAME}}
+PROJECT_SLUG: {{PROJECT_SLUG}}
+REPO_URL: {{REPO_URL}}
+PRIMARY_DOMAIN: {{PRIMARY_DOMAIN}}
+FRONTEND_URL: {{FRONTEND_URL}}
+BACKEND_API_URL: {{BACKEND_API_URL}}
+ENVIRONMENT: {{ENVIRONMENT}}  # e.g., production | staging | local
+
+OPENAI_ORG_ID: {{OPENAI_ORG_ID}}
+OPENAI_PROJECT_ID: {{OPENAI_PROJECT_ID}}
+OPENAI_DEFAULT_MODEL: {{OPENAI_DEFAULT_MODEL}}
+OPENAI_FALLBACK_MODEL: {{OPENAI_FALLBACK_MODEL}}
+
+NOTES: {{PROJECT_NOTES}}
