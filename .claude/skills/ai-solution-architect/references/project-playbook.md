@@ -2,7 +2,7 @@
 
 ## System Overview
 
-{{PROJECT_NAME}} is a 3-agent LangGraph system for email campaign optimization:
+{{PROJECT_NAME}} is a 3-agent LangGraph system for domain-specific optimization:
 
 ```
 User Query → Orchestrator → Analyst → Judge → Response
@@ -10,7 +10,7 @@ User Query → Orchestrator → Analyst → Judge → Response
                               └─────────┘ (evidence loop)
 ```
 
-**Goal**: Replace 4+ hours of manual Google Sheet analysis with 30-minute AI-assisted planning.
+**Goal**: Replace manual analysis with AI-assisted planning.
 
 ---
 
@@ -33,14 +33,14 @@ User Query → Orchestrator → Analyst → Judge → Response
 {
   "user_intent": "Find best campaign setup for tomorrow",
   "key_entities": {
-    "list_name": "GM_30D_Opener",
+    "list_name": "{{EXAMPLE_LIST_NAME}}",
     "offer_id": null,
     "timeframe": "7d"
   },
   "knowledge_gaps": [
-    "Current health status of GM_30D_Opener",
-    "Top performing offers for this list",
-    "Any fatigue signals"
+    "Current health status of {{EXAMPLE_LIST_NAME}}",
+    "Top performing items for this segment",
+    "Any quality or fatigue signals"
   ],
   "orchestrator_message": "Please investigate list health and top performers"
 }
@@ -58,11 +58,11 @@ User Query → Orchestrator → Analyst → Judge → Response
 - Override compliance rules
 - Skip evidence gathering
 
-**Tool priority:**
-1. `get_list_health` - Always first for any list question
-2. `get_top_performers` - For recommendation questions
-3. `get_patterns` - For pattern-based insights
-4. `compare_entities` - For comparison questions
+**Tool priority (replace with your tool names):**
+1. `{{TOOL_HEALTH_CHECK}}` - Always first for safety-sensitive questions
+2. `{{TOOL_TOP_PERFORMERS}}` - For recommendation questions
+3. `{{TOOL_PATTERNS}}` - For pattern-based insights
+4. `{{TOOL_COMPARE}}` - For comparison questions
 
 ### Judge: The Quality Gate
 
@@ -86,24 +86,24 @@ User Query → Orchestrator → Analyst → Judge → Response
 **Tables used:**
 | Table | Purpose |
 |-------|---------|
-| `rollup_combo_daily` | Pre-aggregated campaign metrics |
-| `rollup_list_daily` | List-level aggregates |
-| `campaigns` | Raw campaign records (fallback) |
+| `{{TABLE_ROLLUP_COMBO}}` | Pre-aggregated performance metrics |
+| `{{TABLE_ROLLUP_LIST}}` | Segment-level aggregates |
+| `{{TABLE_RAW_EVENTS}}` | Raw event records (fallback) |
 
 **Query patterns:**
 ```sql
 -- List health
 SELECT SUM(sends), SUM(complaints), SUM(bounces)
-FROM rollup_list_daily
-WHERE list_name = :list_name
-AND campaign_date >= CURRENT_DATE - INTERVAL '30 days'
+FROM {{TABLE_ROLLUP_LIST}}
+WHERE segment_name = :segment_name
+AND event_date >= CURRENT_DATE - INTERVAL '{{LOOKBACK_DAYS}} days'
 
 -- Top performers
-SELECT offer_id, AVG(epc) as avg_epc
-FROM rollup_combo_daily
-WHERE list_name = :list_name
-GROUP BY offer_id
-ORDER BY avg_epc DESC
+SELECT item_id, AVG(primary_metric) as avg_metric
+FROM {{TABLE_ROLLUP_COMBO}}
+WHERE segment_name = :segment_name
+GROUP BY item_id
+ORDER BY avg_metric DESC
 LIMIT 5
 ```
 
@@ -112,21 +112,21 @@ LIMIT 5
 **Collections:**
 | Collection | Content |
 |------------|---------|
-| `patterns` | Discovered synergies, anti-patterns |
-| `insights` | Generated insights (reusable) |
-| `performance` | Cached performance data with TTL |
+| `{{COLLECTION_PATTERNS}}` | Discovered synergies, anti-patterns |
+| `{{COLLECTION_INSIGHTS}}` | Generated insights (reusable) |
+| `{{COLLECTION_PERFORMANCE}}` | Cached performance data with TTL |
 
 **Pattern types:**
-- `list_fatigue` - Fatigue signals for lists
-- `offer_hidden_gem` - Underutilized high performers
-- `list_offer_synergy` - Pairs that work well together
-- `list_offer_anti_pattern` - Pairs to avoid
+- `{{PATTERN_FATIGUE}}` - Fatigue signals for segments
+- `{{PATTERN_HIDDEN_GEM}}` - Underutilized high performers
+- `{{PATTERN_SYNERGY}}` - Pairs that work well together
+- `{{PATTERN_ANTI}}` - Pairs to avoid
 
 ---
 
 ## Compliance Thresholds
 
-### Traffic Light System
+### Traffic Light System (replace thresholds)
 
 | Status | Complaint Rate | Bounce Rate | Action |
 |--------|----------------|-------------|--------|
@@ -162,19 +162,19 @@ def validate_option(option, list_health):
 ## Common Query Patterns
 
 ### Planning Query
-**User**: "What should I send to GM_30D_Opener tomorrow?"
+**User**: "What should I send to {{EXAMPLE_LIST_NAME}} tomorrow?"
 
 **Flow**:
-1. Orchestrator extracts: list=GM_30D_Opener, timeframe=recent
-2. Analyst: get_list_health → get_top_performers → get_patterns
+1. Orchestrator extracts: segment={{EXAMPLE_LIST_NAME}}, timeframe=recent
+2. Analyst: {{TOOL_HEALTH_CHECK}} → {{TOOL_TOP_PERFORMERS}} → {{TOOL_PATTERNS}}
 3. Judge: Validate 3 options, recommend safest high performer
 
 ### Comparison Query
-**User**: "Compare quickloanfit vs cashadvance for GM_30D_Opener"
+**User**: "Compare {{EXAMPLE_ITEM_A}} vs {{EXAMPLE_ITEM_B}} for {{EXAMPLE_LIST_NAME}}"
 
 **Flow**:
 1. Orchestrator extracts: list, offer1, offer2
-2. Analyst: compare_entities(offer1, offer2, list)
+2. Analyst: {{TOOL_COMPARE}}(item_a, item_b, segment)
 3. Judge: Format comparison, flag winner with caveats
 
 ### Diagnostic Query
@@ -182,15 +182,15 @@ def validate_option(option, list_health):
 
 **Flow**:
 1. Orchestrator: diagnostic intent, yesterday's date
-2. Analyst: get_recent_trends → get_patterns (look for fatigue, anti-patterns)
+2. Analyst: {{TOOL_TRENDS}} → {{TOOL_PATTERNS}} (look for fatigue, anti-patterns)
 3. Judge: Synthesize diagnosis, suggest fixes
 
 ### Health Query
-**User**: "Is GM_30D_Opener safe to send today?"
+**User**: "Is {{EXAMPLE_LIST_NAME}} safe to send today?"
 
 **Flow**:
 1. Orchestrator: health check intent
-2. Analyst: get_list_health, check_deliverability
+2. Analyst: {{TOOL_HEALTH_CHECK}}, {{TOOL_DELIVERABILITY}}
 3. Judge: Return traffic light status with explanation
 
 ---

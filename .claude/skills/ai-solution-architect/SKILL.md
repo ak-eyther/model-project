@@ -336,4 +336,4 @@ Every rule has exceptions. Ask:
 - [Model Intelligence](references/model-intelligence.md) - Selection, routing, fine-tuning
 - [Context Engineering](references/context-engineering.md) - What goes INTO prompts
 - [Email Marketing AI](references/email-marketing-ai.md) - Domain patterns
-- [{{PROJECT_NAME}} Playbook](references/{{PROJECT_PREFIX}}-playbook.md) - System-specific wisdom
+- [Project Playbook](references/project-playbook.md) - System-specific wisdom
